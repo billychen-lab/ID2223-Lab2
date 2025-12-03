@@ -12,7 +12,6 @@ Links:
 - Fine-tuned model (merged 16-bit): https://huggingface.co/yunyuan01/llama32-1b-finetome-merged16
 - Gradio UI (Space “iris”): <你的 Space URL>
 
----
 
 ## 2. Task 1 – Fine-tuning pipeline
 
