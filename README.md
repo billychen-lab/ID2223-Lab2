@@ -51,6 +51,66 @@ Links:
   - Runs generation with `max_new_tokens=128`
   - Communicates the value as a “FineTome teaching assistant”
 
+### 2.6 Attempted GGUF export (CPU-friendly format)
+
+The lab instructions mention converting the fine-tuned model to a more
+CPU-friendly format such as **GGUF**.  
+I tried to do this using Unsloth’s built-in helper
+`model.push_to_hub_gguf(...)`, starting from my LoRA checkpoint on the
+Hugging Face Hub:
+
+```python
+from unsloth import FastLanguageModel
+
+# 1) Load the fine-tuned LoRA model from HF
+model, tokenizer = FastLanguageModel.from_pretrained(
+    model_name     = "yunquan01/llama32-1b-finetome-lora",
+    max_seq_length = 2048,   # I also tried 1024 later
+    dtype          = None,
+    load_in_4bit   = True,
+)
+
+# 2) Try to convert + upload a quantized GGUF version
+model.push_to_hub_gguf(
+    "yunquan01/llama32-1b-finetome-gguf",
+    tokenizer,
+    quantization_method = "q4_k_m",
+)
+
+What is supposed to happen:
+
+1. Unsloth merges the 4-bit base model and LoRA adapters into a full
+   16-bit model (`model.safetensors`, ~2.5 GB).
+2. It then calls the `llama.cpp` conversion tools to quantize this model
+   to **GGUF** with the selected method (`q4_k_m`) and uploads the
+   resulting `.gguf` file to a new HF repo
+   (`yunyuan01/llama32-1b-finetome-gguf`).
+
+However, on **Google Colab free** this step repeatedly failed due to
+memory limits:
+
+- With `max_seq_length = 2048`, the kernel crashed when converting the
+  merged 16-bit weights to GGUF (RAM usage hit the limit and the session
+  was restarted).
+- I tried again with a smaller context,
+  `max_seq_length = 1024`, but the Colab runtime still crashed at the
+  same stage (after printing “Converting model to GGUF format…” and
+  installing `llama.cpp`).
+
+Because of these resource limitations, the GGUF conversion never
+finished and the repository `yunyuan01/llama32-1b-finetome-gguf` was not
+created successfully (404 on Hugging Face).
+
+Even though I could not produce a final `.gguf` file, this experiment
+shows that I understand the intended CPU-oriented workflow:
+
+- **Train** a LoRA model on GPU.  
+- **Merge** it into a full 16-bit model.  
+- **Quantize to GGUF** (e.g. `q4_k_m`) using `llama.cpp` tools so that
+  the model can be served efficiently on CPU-only backends such as
+  `llama.cpp` or `llama-cpp-python`.
+
+
 ## 3. Task 2 – Improving scalability and performance
 
 ### 3.1 Model-centric improvements
