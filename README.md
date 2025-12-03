@@ -61,7 +61,7 @@ Hugging Face Hub:
 
 from unsloth import FastLanguageModel
 
-# 1) Load the fine-tuned LoRA model from HF
+1) Load the fine-tuned LoRA model from HF
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name     = "yunquan01/llama32-1b-finetome-lora",
     max_seq_length = 2048,   # I also tried 1024 later
@@ -69,7 +69,7 @@ model, tokenizer = FastLanguageModel.from_pretrained(
     load_in_4bit   = True,
 )
 
-# 2) Try to convert + upload a quantized GGUF version
+2) Try to convert + upload a quantized GGUF version
 model.push_to_hub_gguf(
     "yunquan01/llama32-1b-finetome-gguf",
     tokenizer,
