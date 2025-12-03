@@ -59,6 +59,7 @@ I tried to do this using Unsloth’s built-in helper
 `model.push_to_hub_gguf(...)`, starting from my LoRA checkpoint on the
 Hugging Face Hub:
 
+```python
 from unsloth import FastLanguageModel
 
 1) Load the fine-tuned LoRA model from HF
@@ -75,6 +76,7 @@ model.push_to_hub_gguf(
     tokenizer,
     quantization_method = "q4_k_m",
 )
+```
 
 What is supposed to happen:
 
