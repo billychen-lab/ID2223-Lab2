@@ -85,7 +85,7 @@ What is supposed to happen:
 2. It then calls the `llama.cpp` conversion tools to quantize this model
    to **GGUF** with the selected method (`q4_k_m`) and uploads the
    resulting `.gguf` file to a new HF repo
-   (`yunyuan01/llama32-1b-finetome-gguf`).
+   (`yunquan01/llama32-1b-finetome-gguf`).
 
 However, on **Google Colab free** this step repeatedly failed due to
 memory limits:
@@ -99,7 +99,7 @@ memory limits:
   installing `llama.cpp`).
 
 Because of these resource limitations, the GGUF conversion never
-finished and the repository `yunyuan01/llama32-1b-finetome-gguf` was not
+finished and the repository `yunquan01/llama32-1b-finetome-gguf` was not
 created successfully (404 on Hugging Face).
 
 Even though I could not produce a final `.gguf` file, this experiment
