@@ -117,7 +117,7 @@ shows that I understand the intended CPU-oriented workflow:
 
 ### 3.1 Model-centric improvements
 
-To see how much I can improve the answers **without changing the data**, I
+To see how much we can improve the answers **without changing the data**, we
 did a small decoding experiment on the 1B model
 (`yunquan01/llama32-1b-finetome-merged16`). I compared two sets of
 generation hyperparameters on three of my Boolean-logic teaching
