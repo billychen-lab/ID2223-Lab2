@@ -3,7 +3,7 @@
 ## 1. Overview
 
 - Course: ID2223 HT2025
-- Student: <你的名字>
+- Student: Yunquan Chen(yunquan@kth.se) Sibo Zhang()
 - Goal: Fine-tune a small Llama model on the FineTome instruction dataset using LoRA,
   then deploy it on CPU with a Gradio UI (Hugging Face Spaces).
 
