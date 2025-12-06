@@ -1,0 +1,37 @@
+Question: Explain what Boolean operators are in a way that elementary school students can understand.
+[Setting A] temp=0.2, top_p=0.7
+Boolean operators are symbols used to represent “equal to” and “not equal to”. For example, the equality operator “=”, and the inequality operator “≠”.
+
+[Setting B] temp=0.7, top_p=0.9
+Boolean operators are a kind of operator used to represent the “NOT” operation. They can operate on two expressions to determine their results. For example, if both expressions are “0”, then the result is “0”; if one of the expressions is “1”, then the result is “1”. A Boolean operator can be written as “!” (slash). For example, if the expression “x>0” is true and the expression “x<0” is false, then the Boolean operator “!x” turns the expression “x>0” into
+
+================================================================================
+Question: What is the difference between “AND” and “OR” in Boolean operations? Please explain using examples from everyday life.
+[Setting A] temp=0.2, top_p=0.7
+“AND” and “OR” are both basic Boolean operators used to judge the truth of two expressions. However, they differ in the order of evaluation.
+
+The “AND” operation is left-to-right, which means it first checks the first expression and then checks the second expression. If the first expression is true, then the second expression must also be true; otherwise, the result of the operation is false.
+
+The “OR” operation is right-to-left, which means it first checks
+
+[Setting B] temp=0.7, top_p=0.9
+The AND operation and OR operation are both parts of Boolean logic and are used to determine whether a value is true or false. However, the difference between them lies in the way they operate and the results they produce.
+
+1. The AND operation multiplies the expressions inside the parentheses; when the result is true (false) it is true (false), otherwise it is false. Therefore, the AND operation uses parentheses “()”.
+
+2. The OR operation adds the expressions inside the parentheses; when the result is true (false
+
+================================================================================
+Question: What is the “NOT” operation? Give two examples.
+[Setting A] temp=0.2, top_p=0.7
+The NOT operation is one of the operators; it is used to change a value to its opposite. For example:
+
+1. NOT a = a → a = 0
+2. NOT b = b → b = 1
+
+In these examples, NOT a and NOT b are both the opposite values of a and b.
+
+[Setting B] temp=0.7, top_p=0.9
+The NOT operation is one of the operators; it represents the opposite of some value. It can be applied to numbers, labels, or Boolean values. The result of the NOT operation is “true” (True) or “false” (False).
+
+================================================================================
