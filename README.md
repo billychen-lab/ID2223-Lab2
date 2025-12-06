@@ -161,14 +161,46 @@ deterministic.
 
 ### 3.2 Data-centric improvements
 
-Ideas and/or experiments:
-- Filter FineTome to keep only “education / explanation” style samples to
-  better match my UI scenario.
-- Augment the training data with another small instruction dataset
-  (e.g. math / programming instructions) to improve domain coverage.
-- Remove extremely long or noisy samples to reduce training noise.
+So far our models are fine-tuned on the full FineTome instruction dataset
+without any additional filtering. This dataset contains a wide mix of
+tasks (reasoning, coding, creative writing, casual chat, etc.), while our
+UI is specifically aimed at **explaining Boolean logic and basic
+programming concepts to beginners**.
 
-(同样，如果你真的跑了一个“加数据/滤数据”的版本，就写上对比例子。)
+If we had more time and compute, we would explore the following
+data-centric directions:
+
+1. **Filter FineTome to “education / explanation” style samples.**  
+   We would keep only those instructions where the user explicitly asks for
+   an explanation, such as prompts containing phrases like *“explain”*,
+   *“what is”*, *“teach me”*, or *“for beginners”*. This should bias the
+   fine-tuning data towards didactic answers and reduce the influence of
+   tasks that are not relevant to my UI (e.g. long stories or open-ended
+   creative writing).
+
+2. **Add a small, custom Boolean-logic mini-dataset.**  
+   We could manually create an additional set of 20–50 instruction–answer
+   pairs focused on our target topics: Boolean operators (`AND`, `OR`,
+   `NOT`), truth tables, `if` conditions in code, and everyday analogies
+   (e.g. “AND/OR/NOT in daily life”). Mixing this mini-dataset with the
+   original FineTome data would encourage the model to give more accurate
+   and concrete explanations on exactly the questions we care about.
+
+3. **Remove extremely long or noisy samples.**  
+   Some FineTome examples are very long or contain noisy content that is
+   not helpful for teaching (for example, multi-page stories or complicated
+   role-playing dialogues). For our use case these samples mainly increase
+   training time and may push the model to generate unnecessarily long or
+   off-topic answers. We would filter out such samples by applying a maximum
+   token length and simple heuristics (e.g. removing prompts with lots of
+   markup or HTML).
+
+In summary, instead of only scaling the model size, these data-centric
+changes would make the training distribution more closely match my target
+scenario: **short, clear explanations of Boolean logic for beginners**.
+We did not re-train a new model in this lab due to time and resource
+constraints, but these would be natural next steps if we continue this
+project.
 
 
 ### 3.3 Alternative foundation LLMs: 1B vs 3B
