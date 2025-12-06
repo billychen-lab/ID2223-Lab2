@@ -8,8 +8,10 @@
   then deploy it on CPU with a Gradio UI (Hugging Face Spaces).
 
 Links:
-- Fine-tuned model (LoRA): https://huggingface.co/yunyuan01/llama32-1b-finetome-lora
-- Fine-tuned model (merged 16-bit): https://huggingface.co/yunyuan01/llama32-1b-finetome-merged16
+- Fine-tuned model (LoRA) 1B: https://huggingface.co/yunyuan01/llama32-1b-finetome-lora
+- Fine-tuned model (LoRA) 3B: https://huggingface.co/yunyuan01/llama32-3b-finetome-lora
+- Fine-tuned model (merged 16-bit) 1B: https://huggingface.co/yunyuan01/llama32-1b-finetome-merged16
+- Fine-tuned model (merged 16-bit) 3B: https://huggingface.co/yunyuan01/llama32-3b-finetome-merged16
 - Gradio UI (Space “iris”): https://huggingface.co/spaces/yunquan01/iris
 
 
