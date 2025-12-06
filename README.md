@@ -14,7 +14,7 @@ Links:
 - Fine-tuned model (merged 16-bit) 3B: https://huggingface.co/yunquan01/llama32-3b-finetome-merged16
 - Gradio UI (Space “iris”): https://huggingface.co/spaces/yunquan01/iris
 
-This repository contains three main code files. `app.py` is the inference script used in my Hugging Face Space: it loads one of the fine-tuned Llama models (1B or 3B) and exposes a simple Gradio chat UI for Boolean-logic tutoring. `lab2 colab.ipynb` is the original Google Colab notebook for the whole lab pipeline, including loading the base models, LoRA finetuning on the FineTome dataset, saving checkpoints, merging adapters, uploading the models to Hugging Face, and running the 1B vs 3B comparison experiments. `lab2 colab.py` is a script version automatically exported from the notebook; it contains the same training and evaluation logic, but can be read or executed as a plain Python file.
+This repository contains three main code files. `app.py` is the inference script used in our Hugging Face Space: it loads one of the fine-tuned Llama3.2 models (1B or 3B) and exposes a simple Gradio chat UI for Boolean-logic tutoring. `lab2 colab.ipynb` is the original Google Colab notebook for the whole lab pipeline, including loading the base models, LoRA finetuning on the FineTome dataset, saving checkpoints, merging adapters, uploading the models to Hugging Face, and running the 1B vs 3B comparison experiments. `lab2 colab.py` is a script version automatically exported from the notebook; it contains the same training and evaluation logic, but can be read or executed as a plain Python file.
 
 
 
