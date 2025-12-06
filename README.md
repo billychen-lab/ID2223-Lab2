@@ -114,15 +114,50 @@ shows that I understand the intended CPU-oriented workflow:
 
 ## 3. Task 2 – Improving scalability and performance
 
+
 ### 3.1 Model-centric improvements
 
-Ideas and/or experiments:
-- Increase max_steps from 100 → 300/500 to improve alignment.
-- Try different LoRA ranks (e.g. r=8, r=32) to trade off quality vs. speed.
-- Tune generation hyperparameters (temperature, top_p) specifically for
-  my UI use case (教学解释类问答).
+To see how much I can improve the answers **without changing the data**, I
+did a small decoding experiment on the 1B model
+(`yunquan01/llama32-1b-finetome-merged16`). I compared two sets of
+generation hyperparameters on three of my Boolean-logic teaching
+questions (Q1–Q3):
 
-(如果你实际做了实验，就在这里写实验设置 + loss/主观对比结果。)
+- **Setting A**: `temperature = 0.2`, `top_p = 0.7`
+- **Setting B**: `temperature = 0.7`, `top_p = 0.9`
+
+Qualitatively, I observed the following:
+
+- With **Setting A** the model was very conservative and deterministic.  
+  The answers were short and sometimes over-simplified or even misleading.  
+  For example, for Q1 it only said that Boolean operators mean “equals” and
+  “not equals”; for Q2 it incorrectly focused on a “left-to-right vs
+  right-to-left” evaluation order. These replies are easy to grade as
+  “wrong” but they also give me almost no useful explanation to show to a
+  student.
+
+- With **Setting B** the model produced much longer, more conversational
+  answers. It tried to give more detail and sometimes mentioned concrete
+  expressions such as `x > 0` or `!x`. For Q3 (“what is NOT?”) the answer
+  under Setting B actually described the idea of “the opposite value” and
+  explicitly mentioned that the result is `True` or `False`, which is much
+  closer to what I want in a teaching scenario. However, the higher
+  temperature also made the model more likely to ramble or introduce
+  slightly incorrect math-style notation.
+
+Overall, this experiment confirmed that **decoding parameters strongly
+affect the teaching style** of the model:
+
+- Low temperature → short, rigid, but often incomplete explanations.  
+- Higher temperature + larger `top_p` → more fluent and richer
+  explanations, at the cost of occasional hallucinated details.
+
+For my final UI I kept a configuration close to **Setting B**
+(`temperature = 0.7`, `top_p = 0.9`), because my goal is to act as a
+friendly tutor: it is more important that the model gives a detailed,
+easy-to-understand explanation than that every response is perfectly
+deterministic.
+
 
 ### 3.2 Data-centric improvements
 
