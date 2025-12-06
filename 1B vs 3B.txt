@@ -1,0 +1,65 @@
+Q1 Explain what Boolean operators are in a way that elementary school students can understand.
+[1B model answer] (time: 4.86s)
+Boolean operators are symbols used to represent “Boolean values”. Boolean values are symbols that represent a truth value, for example T (true) and F (false). Boolean operators are symbols used to perform operations between Boolean values, such as T + T, T - T, F + F, F - F. These operators add or subtract Boolean values and produce a Boolean value.
+
+[3B model answer] (time: 2.61s)
+Boolean operators are used to judge whether something is true or false. For example, when you ask “Is the weather good today?”, the answer is “yes” or “no”; that is a Boolean value. Boolean values can be compared using operators to obtain new Boolean values.
+================================================================================
+
+Q2 What is the difference between “AND” and “OR” in Boolean operations? Please illustrate with examples from everyday life.
+[1B model answer] (time: 3.00s)
+AND and OR in Boolean operations are both symbols used to check conditions. In Boolean logic, AND is used to check two conditions: if both are true, the result is true; if both are false, the result is false; if one is true and the other is false, the result is true. OR is used to check a single condition: if the condition is true, the result is true; if the condition is false, the result is false. If one condition is true and the other is false, the result is false.
+
+[3B model answer] (time: 10.58s)
+AND and OR are two basic operations in Boolean logic. Their difference lies in their logical results:
+
+AND: both conditions must be satisfied in order to return “true”.
+
+OR: as long as one condition is satisfied, or both conditions are satisfied, it returns “true”.
+
+Examples from daily life:
+
+1. If you have money (A), you can go to the movies (B). This means you can obtain “true” through the AND operation (A & B).
+2. If you have money (…)
+================================================================================
+
+Q3 What is the “NOT” operation? Give two examples.
+[1B model answer] (time: 5.62s)
+The NOT operation is one of the operators. When it operates, it takes the opposite of a value, i.e. 1 -> 0, 0 -> 1.
+
+Example 1:
+1 + NOT 2 = 1 + 0 = 1
+
+Example 2:
+5 + NOT 3 = 5 + 1 = 6
+
+The NOT operation is most common when there is a value both before and after the operator. It can be used to express the concept of “NOT”.
+
+[3B model answer] (time: 7.65s)
+The “NOT” operation is a kind of logical operation used to invert the value of a logical expression. It returns true when the original value is false, and vice versa.
+
+Example 1: x = 5
+NOT(x) = !x
+= !5
+= 0
+Example 2: x = 0
+NOT(x) = !x
+= !0
+= 1
+================================================================================
+
+Q4 In programming, what does the condition if (x > 3 && x < 10) mean?
+[1B model answer] (time: 0.87s)
+This condition means that the value of x is between 3 and 10.
+
+[3B model answer] (time: 1.13s)
+This sentence means that x is between 3 and 10 (not including 3 and 10).
+================================================================================
+
+Q5 In programming, what does the condition if (age < 18 || isStudent) mean?
+[1B model answer] (time: 1.07s)
+The condition if (age < 18 || isStudent) means that the person is either under 18 years old or has student status.
+
+[3B model answer] (time: 1.38s)
+This is a conditional statement that determines whether a person is an adult or a student based on the condition.
+================================================================================
