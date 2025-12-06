@@ -135,13 +135,37 @@ Ideas and/or experiments:
 
 (同样，如果你真的跑了一个“加数据/滤数据”的版本，就写上对比例子。)
 
-### 3.3 Alternative foundation LLMs
 
-To satisfy the requirement of “a couple of different open-source foundation LLMs”, I plan to:
-- Fine-tune another ~1B open-source model (e.g. <模型名>) on a small subset of FineTome.
-- Compare:
-  - CPU inference latency in the Space
-  - Subjective quality on a small evaluation set of questions
+### 3.3 Alternative foundation LLMs: 1B vs 3B
 
-Then choose the best model for the final UI.
+To understand the impact of model size, I manually compared my 1B and 3B
+fine-tuned Llama models on five teaching-oriented questions about Boolean
+logic (Q1–Q5). For each answer I assigned 1–5 points on several dimensions
+(correctness, clarity, quality of examples, etc.), so that the maximum
+total score per answer was 20.
+
+The results show a clear pattern.  
+For the **more conceptual questions** (Q1–Q3: “What is a Boolean
+operator?”, “AND vs OR with real-life examples”, “NOT with two examples”),
+the 1B model often produced short or partially incorrect explanations and
+very few concrete examples, giving total scores around **8/20**. The 3B
+model, in contrast, gave longer explanations with multiple everyday
+examples and much clearer wording, scoring **14–16/20** on the same
+questions. This suggests that the larger 3B model is significantly better
+at verbal reasoning and pedagogical explanation.
+
+For the **more concrete questions** (Q4–Q5: interpreting specific `if`
+conditions such as `x > 3 && x < 10` or `age < 18 || isStudent`), both
+models performed almost perfectly, with scores of **19–20/20**, and their
+outputs were very similar. In these simpler cases, the extra capacity of
+the 3B model does not provide much additional benefit over the 1B model.
+
+On average over the five questions, the 3B model reached about **16.8/20**
+while the 1B model achieved **12.6/20**. However, the 3B model is also
+heavier and slower, which matters for CPU-only inference in a Hugging Face
+Space. Overall, this comparison highlights a clear quality–efficiency
+trade-off: the 3B model is preferable when I care most about explanation
+quality, while the 1B model remains attractive when latency and memory
+constraints are more important.
+
 
