@@ -138,9 +138,9 @@ Ideas and/or experiments:
 
 ### 3.3 Alternative foundation LLMs: 1B vs 3B
 
-To understand the impact of model size, I manually compared my 1B and 3B
+To understand the impact of model size, we manually compared our 1B and 3B
 fine-tuned Llama models on five teaching-oriented questions about Boolean
-logic (Q1–Q5). For each answer I assigned 1–5 points on several dimensions
+logic (Q1–Q5). For each answer we assigned 1–5 points on several dimensions
 (correctness, clarity, quality of examples, etc.), so that the maximum
 total score per answer was 20.
 
